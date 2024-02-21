@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Changing Text Example</title>
+</head>
+<body>
+
+   <h2>Changing Text of an Element in the HTML Document using JavaScript.</h2>
+   <p id="upper">The text of the below elements will be changed by the text you enter in the input bar once you click the button.</p>
+   <input type="text" id="inp"> <br> <br>
+   <button id="btn" onclick="changeText()">Click to change the Text</button>
+   <p id="line1">This is the text of Line1.</p>
+   <p id="line2">This is the text of Line2.</p>
+
+   <script>
+      var line1 = document.getElementById("line1");
+      var line2 = document.getElementById("line2");
+
+      function changeText() {
+         var inp = document.getElementById("inp");
+         var enteredText = inp.value;
+         line1.innerText = enteredText + ", The code modified by Babken Karapetyan and the text of Line1 will be changed.";
+         line2.innerHTML = "<u>" + enteredText + "</u>, <b>Text is changed using the <em>innerHTML</em>.</b><br>";
+      }
+   </script>
+
+</body>
+</html>
