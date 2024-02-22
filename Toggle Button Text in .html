@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    
+    <p>Click the button to swap the text of the DIV element:</p>
+
+    <p><button onclick="myFunction()">Click Me</button></p>
+    
+    <div id="myDIV">Try hard to pass example</div>
+    
+    <script>
+    function myFunction(){
+        var x = document.getElementById("myDIV");
+        if(x.innerHTML === "Try hard to pass example" ){
+            x.innerHTML = "Spend 4 hours  every they for programming!";
+        }else{
+            x.innerHTML = "Try hard to pass example";
+        }
+    }
+    </script>
+    
+    </body>
+    </html>
