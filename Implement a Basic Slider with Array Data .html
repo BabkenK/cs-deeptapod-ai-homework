@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array | Ritvike Codes</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: orange;
+        }
+
+        #img {
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <img src="" alt="image" id="img">
+    <button onclick="next()">Next</button>
+    <button onclick="back()">Back</button>
+
+    <script>
+        var i = 0;
+        var img = document.getElementById("img");
+        var imageArray = [
+            "https://example.com/path/to/image1.jpg",
+            "https://example.com/path/to/image2.jpg",
+            "https://example.com/path/to/image3.jpg"
+        ];
+
+        function next() {
+            ++i;
+            if (i >= imageArray.length) {
+                i = 0;
+            }
+            img.src = imageArray[i];
+        }
+
+        function back() {
+            --i;
+            if (i < 0) {
+                i = imageArray.length - 1;
+            }
+            img.src = imageArray[i];
+        }
+    </script>
+</body>
+</html>

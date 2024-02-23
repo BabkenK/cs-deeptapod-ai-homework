@@ -1,0 +1,25 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">>
+<html>
+<head>
+<script>
+function validateForm() {
+  let x = document.forms["myForm"]["femail"].value;
+  if (x == "") {
+    alert("Please enter an email address");
+    return false;
+  }
+}
+</script>
+</head>
+<body>
+
+<h2 style="color: blue;">Simple Form Validation</h2>
+
+<form name="myForm" action="/action_page.php" onsubmit="return validateForm()" method="post">
+  Email: <input type="text" name="femail"> 
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>

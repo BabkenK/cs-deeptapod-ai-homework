@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var button = document.getElementById('ShowHidebuttn');
+            var paragraph = document.querySelector('p');
+
+            button.addEventListener('click', function() {
+                toggleParagraphVisibility(paragraph);
+                toggleButtonText(button);
+            });
+        });
+
+        function toggleParagraphVisibility(element) {
+            if (element.style.display === 'none') {
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+
+        function toggleButtonText(button) {
+            button.textContent = (button.textContent === 'Hide') ? 'Show' : 'Hide';
+        }
+</script>
+</head>
+<body>
+    <button id="ShowHidebuttn">Hide</button>
+    <p>Paragraph to show</p>
+</body>
+</html>
