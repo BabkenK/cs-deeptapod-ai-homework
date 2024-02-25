@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Save Form</title>
+</head>
+<body>
+    <form id="myform">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name">
+        </div>
+        <div>
+            <label>Email:</label>
+            <input type="email" name="email" id="email">
+        </div>
+        <div>
+            <label>Message:</label>
+            <textarea name="message" id="message"></textarea>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('myform');
+            const saveThrottled = throttle(saveFormData, 1000); // Throttle to 1 second
+
+            // Load saved data on page load
+            loadFormData();
+
+            // Save data on form input change with throttling
+            form.addEventListener('input', saveThrottled);
+
+            function saveFormData() {
+                localStorage.setItem('formData', JSON.stringify(Object.fromEntries(new FormData(form))));
+                console.log('Form data saved!');
+            }
+
+            function loadFormData() {
+                const savedFormData = localStorage.getItem('formData');
+                if (savedFormData) {
+                    const formData = JSON.parse(savedFormData);
+                    for (const key in formData) {
+                        const element = form.elements[key];
+                        if (element) {
+                            if (element.type === 'radio' || element.type === 'checkbox') {
+                                form.elements[key].checked = formData[key];
+                            } else {
+                                form.elements[key].value = formData[key];
+                            }
+                        }
+                    }
+                    console.log('Form data loaded!');
+                }
+            }
+
+            // Throttle function to limit the rate of execution
+            function throttle(func, limit) {
+                let inThrottle;
+                return function() {
+                    const args = arguments;
+                    const context = this;
+                    if (!inThrottle) {
+                        func.apply(context, args);
+                        inThrottle = true;
+                        setTimeout(() => inThrottle = false, limit);
+                    }
+                };
+            }
+        });
+    </script>
+</body>
+</html>
