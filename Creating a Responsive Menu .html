@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+"http://www.w3.org/TR/html4/strict.dtd">>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Menu </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="navigation-header">
+    <nav>
+        <div class="logo-container"><a href="./index.html">Logo</a></div>
+        <div class="navigation-items" id="navigation-items">
+            <a href="">Register</a>
+            <a href="">About</a>
+            <a href="">Contact info</a>
+        </div>
+        <div class="hamburger">
+            <span id="openHam">&#9776;</span>
+            <span id="closeHam">&#x2716;</span>
+        </div>
+    </nav>
+</header>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        let openHam = document.querySelector('#openHam');
+        let closeHam = document.querySelector('#closeHam');
+        let navigationItems = document.querySelector('#navigation-items');
+
+        const hamburgerEvent = () => {
+            const navigationStyle = navigationItems.style.display === 'none' || navigationItems.style.display === '' ? 'flex' : 'none';
+            navigationItems.style.display = navigationStyle;
+            closeHam.style.display = navigationStyle === 'none' ? 'none' : 'block';
+            openHam.style.display = navigationStyle === 'none' ? 'block' : 'none';
+        };
+
+        openHam.addEventListener('click', hamburgerEvent);
+        closeHam.addEventListener('click', hamburgerEvent);
+    });
+</script>
+
+</body>
+</html>
