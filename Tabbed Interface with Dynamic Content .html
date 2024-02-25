@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <title>Dynamic Tabs</title>
+</head>
+<body>
+    <div id="tabs-container"></div>
+    <div id="content-container"></div>
+</body>
+</html>
+
+/* styles.css */
+#tabs-container {
+    display: flex;
+}
+
+.tab {
+    cursor: pointer;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px 5px 0 0;
+}
+
+.tab:hover {
+    background-color: #f0f0f0;
+}
+
+#content-container > div {
+    display: none;
+}
+
+#content-container > div.active {
+    display: block;
+}
+
+// script.js
+document.addEventListener('DOMContentLoaded', function () {
+    const tabsContainer = document.getElementById('tabs-container');
+    const contentContainer = document.getElementById('content-container');
+    const tabData = ['Tab 1', 'Tab 2', 'Tab 3'];
+    const contentData = ['Content for Tab 1', 'Content for Tab 2', 'Content for Tab 3'];
+
+    // Inside initializeTabs function
+    tabData.forEach((tab, index) => {
+        const tabButton = document.createElement('div');
+        tabButton.classList.add('tab');
+        tabButton.textContent = tab;
+        tabButton.addEventListener('click', () => handleTabClick(index));
+        tabsContainer.appendChild(tabButton);
+
+        const contentDiv = document.createElement('div');
+        contentDiv.textContent = contentData[index];
+        contentContainer.appendChild(contentDiv);
+    });
+
+    // Placeholder function, replace this with your actual logic
+    function handleTabClick(index) {
+        // Hide all content divs
+        const contentDivs = document.querySelectorAll('#content-container > div');
+        contentDivs.forEach((div) => div.classList.remove('active'));
+
+        // Show the clicked tab's content
+        contentDivs[index].classList.add('active');
+    }
+});
